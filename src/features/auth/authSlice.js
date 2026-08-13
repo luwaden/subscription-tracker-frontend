@@ -53,7 +53,7 @@ export const signIn = createAsyncThunk(
   "auth/signIn",
   async ({ email, password }, { rejectWithValue }) => {
     try {
-      const res = await api.post("/auth/sign-in", { email, password });
+      const res = await api.post("/api/v1/auth/sign-in", { email, password });
       return res.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -61,7 +61,7 @@ export const signIn = createAsyncThunk(
   }
 );
 
-export const signOut = createAsyncThunk("auth/signOut", async () => {
+export const signOut = createAsyncThunk("/api/v1/auth/signOut", async () => {
   try {
     await api.post("/auth/sign-out");
   } catch {

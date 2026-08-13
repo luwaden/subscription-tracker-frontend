@@ -22,7 +22,7 @@ export const fetchSubscriptions = createAsyncThunk(
   "subscriptions/fetchAll",
   async (_, { rejectWithValue }) => {
     try {
-      const res = await api.get("/subscriptions");
+      const res = await api.get("/api/v1/subscriptions");
       return res.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -34,7 +34,7 @@ export const fetchSubscriptionById = createAsyncThunk(
   "subscriptions/fetchOne",
   async (id, { rejectWithValue }) => {
     try {
-      const res = await api.get(`/subscriptions/${id}`);
+      const res = await api.get(`/api/v1/subscriptions/${id}`);
       return res.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -46,7 +46,7 @@ export const createSubscription = createAsyncThunk(
   "subscriptions/create",
   async (payload, { rejectWithValue }) => {
     try {
-      const res = await api.post("/subscriptions", payload);
+      const res = await api.post("/api/v1/subscriptions", payload);
       return res.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -58,7 +58,7 @@ export const updateSubscription = createAsyncThunk(
   "subscriptions/update",
   async ({ id, payload }, { rejectWithValue }) => {
     try {
-      const res = await api.put(`/subscriptions/${id}`, payload);
+      const res = await api.put(`/api/v1/subscriptions/${id}`, payload);
       return res.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -70,7 +70,7 @@ export const deleteSubscription = createAsyncThunk(
   "subscriptions/delete",
   async (id, { rejectWithValue }) => {
     try {
-      await api.delete(`/subscriptions/${id}`);
+      await api.delete(`/api/v1/subscriptions/${id}`);
       return id; // we only need the id, to remove it from local state
     } catch (error) {
       return rejectWithValue(error.message);
