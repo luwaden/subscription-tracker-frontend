@@ -36,7 +36,7 @@ export const signUp = createAsyncThunk(
   "auth/signUp",
   async ({ name, email, password }, { rejectWithValue }) => {
     try {
-      const res = await api.post("/auth/sign-up", { name, email, password });
+      const res = await api.post("/api/v1/auth/sign-up", { name, email, password });
       return res.data; // becomes action.payload in the "fulfilled" case
     } catch (error) {
       // rejectWithValue lets us control exactly what ends up in
